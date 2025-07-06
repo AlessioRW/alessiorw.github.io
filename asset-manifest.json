@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.5502d0d9.css",
+    "main.js": "/portfolio/static/js/main.738c0364.js",
+    "static/media/usagi.webp": "/portfolio/static/media/usagi.a590aaf3d67ea61e381a.webp",
+    "static/media/golang_interfaces.md": "/portfolio/static/media/golang_interfaces.a5b1f98f4d99a62f777f.md",
+    "index.html": "/portfolio/index.html",
+    "static/media/home.md": "/portfolio/static/media/home.64f99dd0374e9c31f145.md",
+    "static/media/blog.md": "/portfolio/static/media/blog.a123f037b6323027f148.md",
+    "static/media/portfolio.md": "/portfolio/static/media/portfolio.31d6cfe0d16ae931b73c.md",
+    "main.5502d0d9.css.map": "/portfolio/static/css/main.5502d0d9.css.map",
+    "main.738c0364.js.map": "/portfolio/static/js/main.738c0364.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5502d0d9.css",
+    "static/js/main.738c0364.js"
+  ]
+}
