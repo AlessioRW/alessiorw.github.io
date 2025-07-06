@@ -73,7 +73,6 @@ export async function GetMarkdown(url) {
 
   // place image into html
   html = InsertImages(html)
-  console.log(html)
 
 
   return parse(html)
