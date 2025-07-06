@@ -13,10 +13,9 @@ const converter = new Showdown.Converter()
 
 // map url routes to markdown files
 export const pageMap = {
-  "portfolio/": HomeMd,
-  "portfolio/blog": BlogMd,
-  "portfolio/portfolio": PortfolioMd,
   "": HomeMd,
+  "blog": BlogMd,
+  "portfolio": PortfolioMd,
 
   "blog/golang-interfaces": BlogGolangInterfaces
 }
