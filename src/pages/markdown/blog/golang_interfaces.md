@@ -26,7 +26,7 @@ type DbClient struct {
   dbConn *sql.DB
 }
 
-Func GetDatabaseClient() (DbClient) {
+func GetDatabaseClient() (DbClient) {
 
   dsn = "your mysql dsn string"
   db, err = sql.Open("mysql", dsn)
@@ -38,7 +38,7 @@ Func GetDatabaseClient() (DbClient) {
   }
 }
 
-(dbClient DbClient) func GetUser(id int) (string, error) {
+func (dbClient DbClient) GetUser(id int) (string, error) {
   // some code to get the username by id from your database
   return user, nil
 }
@@ -55,7 +55,7 @@ func GetTestDatabaseClient() (TestDBClient) {
   return TestDBClient{}
 }
 
-(testDbClient TestDbClient) func GetUser(id int) (string, error) {
+func (testDbClient TestDbClient) GetUser(id int) (string, error) {
   if id == 2 {
     return "", fmt.Errorf("error getting user of id=%v, no record found", id)
   }
