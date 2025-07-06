@@ -14,8 +14,14 @@ So let's take a look at how this could be done in code:
 <br/>
 <b>db.go</b>
 ```
-// This is our interface, it will tell us every method that a struct needs so that it can be used in place of the interface
+package db
 
+import (
+  "sql"
+  _ "github.com/go-sql-driver/mysql"
+)
+
+// This is our interface, it will tell us every method that a struct needs so that it can be used in place of the interface
 type DatabaseInterface interface {
   GetUser(id int) (string, error)
 }
@@ -26,16 +32,16 @@ type DbClient struct {
   dbConn *sql.DB
 }
 
-func GetDatabaseClient() (DbClient) {
+func GetDatabaseClient() (*DbClient, err) {
 
   dsn := "your mysql dsn string"
   db, err := sql.Open("mysql", dsn)
   if err != nil {
-    log.Fatal(err)
+    return nil, err
   }
-  return DbClient{
+  return &DbClient{
     dbConn: db
-  }
+  }, nil
 }
 
 func (dbClient DbClient) GetUser(id int) (string, error) {
@@ -48,12 +54,17 @@ func (dbClient DbClient) GetUser(id int) (string, error) {
 
 <b>db_test.go</b>
 ```
-// Defining our test client
+package db
 
+import (
+  "fmt"
+)
+
+// Defining our test client
 type TestDBClient{}
 
-func GetTestDatabaseClient() (TestDBClient) {
-  return TestDBClient{}
+func GetTestDatabaseClient() (*TestDBClient, error) {
+  return &TestDBClient{}, nil
 }
 
 func (testDbClient TestDbClient) GetUser(id int) (string, error) {
@@ -65,13 +76,19 @@ func (testDbClient TestDbClient) GetUser(id int) (string, error) {
 ```
 
 <br>
-And that's it! You now have two datasources which could be used in place of the `DatabaseInterface` value, since they both have the `GreetUser` method defined against them. See how we can do that below:
+And that's it! You now have two datasources which could be used in place of the `DatabaseInterface` value, since they both have the `GetUser` method defined against them. See how we can do that below:
 
 <br>
 <b>main.go</b>
 ```
+package main
 
-func GreetUser(dbClient DatabaseInterface, userId int) error {
+import (
+  ".../db"
+  "fmt"
+)
+
+func GreetUser(dbClient db.DatabaseInterface, userId int) error {
   name, err := dbClient.GetUser(userId)
   if err != nil {
     return err
@@ -83,10 +100,10 @@ func GreetUser(dbClient DatabaseInterface, userId int) error {
 func main() {
 
   // getting our real database connection
-  dbClient, _ := GetDatabaseClient()
+  dbClient, _ := db.GetDatabaseClient()
 
   // getting our test database connection
-  testDbClient := GetTestDatabaseClient()
+  testDbClient := db.GetTestDatabaseClient()
 
   // run function using our real client
   GreetUser(dbClient, 1)
