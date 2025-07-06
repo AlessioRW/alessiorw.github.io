@@ -5,7 +5,7 @@ I'll admit, it took me an embarrassingly long time to actually get round using i
 
 <br>
 
-To put it simply, you should use interfaces when you have a function which might need to access the same methods from different sources, it does what it says on the box. This could look like having a real database client which connects to a MySQL instance and a mocked client which you use for testing, or myabe you have a function which needs to call two different APIs, as long as both your API clients fufill the methods interfaces, they can both be used. 
+To put it simply, you should use interfaces when you have a function which might need to access the same methods from different sources, it does what it says on the box. This could look like having a real database client which connects to a MySQL instance and a mocked client which you use for testing, or maybe you have a function which needs to call two different APIs, as long as both your API clients fulfill the methods interfaces, they can both be used. 
 
 <br/>
 
@@ -28,8 +28,8 @@ type DbClient struct {
 
 func GetDatabaseClient() (DbClient) {
 
-  dsn = "your mysql dsn string"
-  db, err = sql.Open("mysql", dsn)
+  dsn := "your mysql dsn string"
+  db, err := sql.Open("mysql", dsn)
   if err != nil {
     log.Fatal(err)
   }
@@ -39,6 +39,7 @@ func GetDatabaseClient() (DbClient) {
 }
 
 func (dbClient DbClient) GetUser(id int) (string, error) {
+  user := ""
   // some code to get the username by id from your database
   return user, nil
 }
@@ -75,7 +76,7 @@ func GreetUser(dbClient DatabaseInterface, userId int) error {
   if err != nil {
     return err
   } else {
-    log.Println(fmt.Sprintf("Hello, $v!", name))
+    log.Println(fmt.Sprintf("Hello, %v!", name))
   }
 }
 
@@ -99,3 +100,11 @@ func main() {
 <br>
 
 Now in response, the first call to `GreetUser` will return the username (or error) of whatever exists in the row of id 1 of our users table, and for the second call, we will always get the response "Hello, Xiao Xiong!" as this is what our test client is pre-determined to do. 
+
+<br>
+
+And that's it for now, there is more you can use interfaces for and this is not a comprehensive overview but instead should provide a good start.
+
+<br>
+
+Thank you for reading!
