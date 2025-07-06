@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/static/css/main.5502d0d9.css",
-    "main.js": "/static/js/main.ac15af03.js",
+    "main.js": "/static/js/main.14d7716e.js",
     "static/media/usagi.webp": "/static/media/usagi.a590aaf3d67ea61e381a.webp",
-    "static/media/golang_interfaces.md": "/static/media/golang_interfaces.22920c79bbae771b7845.md",
+    "static/media/golang_interfaces.md": "/static/media/golang_interfaces.a8da9584ee81cc30a149.md",
     "index.html": "/index.html",
-    "static/media/home.md": "/static/media/home.1588dedf07b33a66acad.md",
+    "static/media/home.md": "/static/media/home.d2339efe5403f4fa2770.md",
     "static/media/blog.md": "/static/media/blog.a123f037b6323027f148.md",
-    "static/media/portfolio.md": "/static/media/portfolio.31d6cfe0d16ae931b73c.md",
+    "static/media/portfolio.md": "/static/media/portfolio.8c6876ecb8d337f5713c.md",
     "main.5502d0d9.css.map": "/static/css/main.5502d0d9.css.map",
-    "main.ac15af03.js.map": "/static/js/main.ac15af03.js.map"
+    "main.14d7716e.js.map": "/static/js/main.14d7716e.js.map"
   },
   "entrypoints": [
     "static/css/main.5502d0d9.css",
-    "static/js/main.ac15af03.js"
+    "static/js/main.14d7716e.js"
   ]
 }
