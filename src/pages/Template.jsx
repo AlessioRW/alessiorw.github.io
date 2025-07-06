@@ -1,9 +1,5 @@
-
-
 import { useEffect, useState } from "react"
 import { GetMarkdown } from "../utils/pages"
-
-
 
 function Template() {
   const [content, setContent] = useState("")
